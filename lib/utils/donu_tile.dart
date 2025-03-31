@@ -5,13 +5,16 @@ class DonutTile extends StatelessWidget {
   final String donutPrice;
   final dynamic donutColor;
   final String imageName;
+  final String donutStore;
 
-  const DonutTile(
-      {super.key,
-      required this.imageName,
-      required this.donutColor,
-      required this.donutPrice,
-      required this.donutFlavor});
+  const DonutTile({
+    super.key,
+    required this.imageName,
+    required this.donutColor,
+    required this.donutPrice,
+    required this.donutFlavor,
+    required this.donutStore,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,22 +60,38 @@ class DonutTile extends StatelessWidget {
               donutFlavor,
               style: TextStyle(
                 fontSize: 24,
+                color: donutColor,
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(
+              height: 15,
+            ),
             Text(
-              "Dunkins",
+              donutStore,
               style: TextStyle(fontSize: 15, color: Colors.grey),
             ),
 
             //Icons
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.favorite),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.favorite_border),
+                    color: donutColor,
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text("Add",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: donutColor,
+                              fontWeight: FontWeight.bold))),
+                ],
+              ),
             ),
           ],
         ),
