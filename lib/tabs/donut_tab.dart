@@ -38,7 +38,7 @@ class DonutTab extends StatelessWidget {
           //numero de columnas
           crossAxisCount: 2,
           //proporcion entre ancho y largo
-          childAspectRatio: 1 / 1.9),
+          childAspectRatio: 1 / 1.8),
       //Cuantos elementos
       itemCount: 4,
       padding: const EdgeInsets.all(12),
