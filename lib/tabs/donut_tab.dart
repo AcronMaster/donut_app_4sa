@@ -1,55 +1,75 @@
-import 'package:donut_app_4sa/utils/donu_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:donut_app_4sa/utils/donu_tile.dart';
 
 class DonutTab extends StatelessWidget {
+  final Function(double) onAddItem;
+
+  DonutTab({super.key, required this.onAddItem});
+
   final List donutsOnSale = [
-    // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
     [
-      "Ice Cream",
+      "Azucar",
       "Krispy Kreme",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
+      "38",
+      Colors.yellow,
+      "lib/images/dona_azucar.png"
     ],
     [
-      "Strawberry",
-      "Dunki Donots",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    ["Grape Ape", "Crape", "84", Colors.purple, "lib/images/grape_donut.png"],
-    [
-      "Choco",
-      "Wili Wonka",
-      "95",
+      "Chocolate",
+      "Krispy Kreme",
+      "46",
       Colors.brown,
-      "lib/images/chocolate_donut.png"
+      "lib/images/dona_chocolate.png"
+    ],
+    ["Grape", "Krispy Kreme", "52", Colors.purple, "lib/images/dona_grape.png"],
+    [
+      "Helado",
+      "Krispy Kreme",
+      "61",
+      Colors.grey,
+      "lib/images/dona_icecream.png"
+    ],
+    ["Piña", "Krispy Kreme", "38", Colors.orange, "lib/images/dona_piña.png"],
+    [
+      "Simple",
+      "Krispy Kreme",
+      "32",
+      Colors.orange,
+      "lib/images/dona_simple.png"
+    ],
+    [
+      "Fresa",
+      "Krispy Kreme",
+      "38",
+      Colors.pink,
+      "lib/images/dona_strawberry.png"
+    ],
+    [
+      "Vainilla",
+      "Krispy Kreme",
+      "38",
+      Colors.grey,
+      "lib/images/dona_vainilla.png"
     ],
   ];
-
-  DonutTab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      //Prepa 1
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //numero de columnas
-          crossAxisCount: 2,
-          //proporcion entre ancho y largo
-          childAspectRatio: 1 / 1.8),
-      //Cuantos elementos
-      itemCount: 4,
+      itemCount: donutsOnSale.length,
       padding: const EdgeInsets.all(12),
-      //Que elemento se construirá
-      itemBuilder: (contex, index) {
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1 / 1.8,
+      ),
+      itemBuilder: (context, index) {
         return DonutTile(
           donutFlavor: donutsOnSale[index][0],
           donutStore: donutsOnSale[index][1],
           donutPrice: donutsOnSale[index][2],
           donutColor: donutsOnSale[index][3],
           imageName: donutsOnSale[index][4],
+          onAdd: onAddItem,
         );
       },
     );
